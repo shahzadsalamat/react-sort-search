@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: black;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    background-color: #3066BE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.form-input {
+  line-height: 30px;
+  border: none;
+  padding-left: 15px;
+  margin-left: 20px;
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.bg-blue {
+  background-color: #150578;
+}
+
+.bg-green {
+  background-color: green;
+}
+
+.color-white {
+ color: white
+}
+
+.color-black {
+  color: black
+ }
+
+/**colors end***/
+
+.form-button {
+  line-height: 25px;
+  border: none;
+  text-align: center;
+  margin-left: 20px;
+  color: white;
+}
+
+.form-button:hover{
+background-color: #322396;
+color: black;
+}
+
+/**table start***/
+
+.div-table {
+    display: table;         
+    width: auto;         
+    background-color: #3066BE;         
+    border: 1px solid #666666;         
+    border-spacing: 2px; /* cellspacing:poor IE support for  this */
+    margin-top: 10px;
+    color: black;
+  }
+  .div-table-row {
+    display: table-row;
+    width: auto;
+    clear: both;
+    line-height: 20px;
+    text-align: center;
+  }
+  .div-table-col {
+    float: left; /* fix for  buggy browsers */
+    display: table-column;         
+    width: 164px;
+    height: 30px;
+    background-color: #fff;  
+  }
