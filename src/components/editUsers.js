@@ -20,7 +20,6 @@ class EditUsers extends Component {
     handleEditUserSubmit = () => {
         const editedUser = this.state.editUserData;
         this.props.editUserSubmit(editedUser);
-     //   console.log('editeduser' + JSON.stringify(editedUser));
     };
 
     handleEditUserChange = (e) => {
@@ -36,46 +35,45 @@ class EditUsers extends Component {
 
     render() {
         return (
-            <div>
-                <form style={{ backgroundcolor: "white" }}>
+            <div className='form-wrapper'>
+                <input
+                    className='input-form'
+                    type='text'
+                    placeholder='firstName'
+                    name='firstName'
+                    value={this.state.editUserData.firstName}
+                    onChange={this.handleEditUserChange}
+                />
+                <input
+                    className='input-form'
+                    type='text'
+                    placeholder='lastName'
+                    name='lastName'
+                    value={this.state.editUserData.lastName}
+                    onChange={this.handleEditUserChange}
+                />
+                <input
+                    className='input-form'
+                    type="number" pattern="[0-9]*" inputmode="numeric"
+                    placeholder='phoneNumber'
+                    name='phoneNumber'
+                    value={this.state.editUserData.phoneNumber}
+                    onChange={this.handleEditUserChange}
+                />
+                <div>
                     <input
-                        className='form-input'
-                        type='text'
-                        placeholder='firstName'
-                        name='firstName'
-                        value={this.state.editUserData.firstName}
-                        onChange={this.handleEditUserChange}
-                    />
-                    <input
-                        className='form-input'
-                        type='text'
-                        placeholder='lastName'
-                        name='lastName'
-                        value={this.state.editUserData.lastName}
-                        onChange={this.handleEditUserChange}
-                    />
-                    <input
-                        className='form-input'
-                        type="text" 
-                        pattern="[0-9]*"
-                        placeholder='phoneNumber'
-                        name='phoneNumber'
-                        value={this.state.editUserData.phoneNumber}
-                        onChange={this.handleEditUserChange}
-                    />
-                    <input
-                        className='form-button bg-blue color-white'
+                        className='form-button bg-green color-white'
                         type='button'
-                        value='submit'
+                        value='Update'
                         onClick={this.handleEditUserSubmit.bind(this)}
                     />
                     <input
-                        className='form-button bg-blue color-white'
+                        className='form-button bg-red color-white'
                         type='button'
                         value='cancel'
                         onClick={this.handleCancelEdit}
                     />
-                </form>
+                </div>
             </div>
         )
     }

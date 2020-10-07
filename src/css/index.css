@@ -1,28 +1,11 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    text-decoration: none;
-    color: black;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: black;
 }
-
-.wrapper {
-    width: 100%;
-    height: 100vh;
-    background-color: #3066BE;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;
-}
-
-.form-input {
-  line-height: 30px;
-  border: none;
-  padding-left: 15px;
-  margin-left: 20px;
-}
-
+/**backgroud colors***/
 .bg-red {
   background-color: red;
 }
@@ -35,51 +18,124 @@ body {
   background-color: green;
 }
 
-.color-white {
- color: white
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #3066BE;
 }
 
-.color-black {
-  color: black
- }
+.container {
+  width: 60%;
+  height: auto;
+  flex-direction: column;
+  padding-top: 30px;
+}
 
-/**colors end***/
+.form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px 0px 20px;
+  flex-wrap: wrap;
+}
+
+.container-search-sort {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 20px 20px;
+  flex-wrap: wrap-reverse;
+}
+
+.input-form {
+  line-height: 30px;
+  border: none;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.input-sort {
+  line-height: 30px;
+}
+
+.input-search {
+  border-radius: 20px;
+  width: 200px;
+}
 
 .form-button {
   line-height: 25px;
   border: none;
   text-align: center;
-  margin-left: 20px;
+  margin-top: 5px;
   color: white;
 }
 
 .form-button:hover{
-background-color: #322396;
-color: black;
+  background-color: #9e96d4;
+  color: black;
 }
 
 /**table start***/
+.table-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: .8rem;
+  line-height: 1.5;
+  border-bottom: 1px solid #d0d0d0;
+  flex: 1 1 auto;
+}
+ 
+.table-header {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  font-weight: 700;
+  background-color: #f2f2f2;
+}
+  
+.table-header > .table-col {
+  white-space: normal;
+  justify-content: center;
+}
 
-.div-table {
-    display: table;         
-    width: auto;         
-    background-color: #3066BE;         
-    border: 1px solid #666666;         
-    border-spacing: 2px; /* cellspacing:poor IE support for  this */
-    margin-top: 10px;
-    color: black;
-  }
-  .div-table-row {
-    display: table-row;
-    width: auto;
-    clear: both;
-    line-height: 20px;
-    text-align: center;
-  }
-  .div-table-col {
-    float: left; /* fix for  buggy browsers */
-    display: table-column;         
-    width: 164px;
-    height: 30px;
-    background-color: #fff;  
-  }
+.table-row {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+  
+.table-row:nth-of-type(even) {
+  background-color: #f2f2f2;
+}
+  
+.table-row:nth-of-type(odd) {
+  background-color: #ffffff;
+}
+  
+.table-col {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 0.5em;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0px;
+  white-space: nowrap;
+  border-bottom: 1px solid #d0d0d0;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+
+.container {
+  width: 90%;
+}
+.container-search-sort {
+  padding: 20px 20px 20px 0px;
+}
+
+} 

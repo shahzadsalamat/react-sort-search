@@ -3,13 +3,15 @@ import CreateUsersForm from './components/createUsersForm.js';
 import UsersList from './components/usersList.js';
 import './css/index.css';
 import firebaseDB from './js/firebase.js';
-import Sort from './js/sort.js'
+import Sort from './components/sort.js';
+import Search from './components/search.js'
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            getUsers: [],
+            users: [],
+            filterUsers: []
         }
     }
 
@@ -22,19 +24,18 @@ class App extends Component {
                     firstName: item.val().firstName,
                     lastName: item.val().lastName,
                     phoneNumber: item.val().phoneNumber
-
                 });
             })
             this.setState({
-                ...this.state.getUsers,
-                getUsers: previousUserData
+                ...this.state.users,
+                users: previousUserData,
+                filterUsers: previousUserData
             });
         });
     }
 
     editUserSubmit = (editedUserData, userId) => {
         firebaseDB.database().ref().child('user/' + userId).set(editedUserData);
-        // console.log('user is being edited' + JSON.stringify(editedUserData.firstName));
     };
 
     deleteUser = (deletedUser) => {
@@ -44,43 +45,64 @@ class App extends Component {
     addNewUser = (newUserData) => {
         firebaseDB.database().ref().child('user').push(newUserData);
     }
-    // for sorting the data
+  
     sortDataTable = (sortedValue) => {
-        const unSortedUsers = this.state.getUsers,
-        sortedUsers = unSortedUsers.sort((a, b) =>
+        const unSortedUsers = this.state.users;
+        const sortedUsers = unSortedUsers.sort((a, b) =>
             a[sortedValue].localeCompare(b[sortedValue])
         );
-        
         this.setState({
-            getUsers: sortedUsers
+            filterUsers: sortedUsers
         })
     }
 
+    searchUser = (searchInputValue) => {
+        this.setState({
+            filterUsers: this.state.users
+        });
+        const users = this.state.users;
+        const filteredResult = users.filter(data => {
+            if (searchInputValue == null)
+                return data
+            else if (data.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || data.lastName.toLowerCase().includes(searchInputValue.toLowerCase())) {
+                return data
+            }
+            else {
+                return null
+            }
+        });
+        this.setState({
+            filterUsers: filteredResult
+        });
+    }
+
     render() {
-        const headerObject = Object.assign({}, this.state.getUsers[0]);
+        // for sorting
+        const headerObject = Object.assign({}, this.state.users[0]);
         const userDataHeader = Object.keys(headerObject);
-        
         return (
-
             <div className='wrapper'>
-
+             <div className='container'>
                 <CreateUsersForm addNewUser={this.addNewUser} />
-                <Sort sortDataTable={this.sortDataTable} sortValues={userDataHeader} />
+                <div className='container-search-sort'>
+                    <div className='input-search'>               
+                        <Search searchInputValue={this.state.searchInputValue} users={this.state.users} searchUser={this.searchUser} />
+                    </div>
+                    <div className='input-sort'>
+                        <Sort sortDataTable={this.sortDataTable} sortValues={userDataHeader} />
+                    </div>
+                </div>
                 <div>
-
-                    <div className='div-table'>
-                        <div className='div-table-row'>
-                            <div className='div-table-col'>First Name</div>
-                            <div className='div-table-col'>Last Name</div>
-                            <div className='div-table-col'>Phone Number</div>
-                            <div className='div-table-col'>Action</div>
-
+                    <div className='table-wrapper'>
+                        <div className='table-header'>
+                            <div className='table-col'>First Name</div>
+                            <div className='table-col'>Last Name</div>
+                            <div className='table-col'>Phone Number</div>
+                            <div className='table-col'>Action</div>
                         </div>
                     </div>
-
                     {
-
-                        this.state.getUsers.map((item) => {
+                        this.state.filterUsers.map((item) => {
                             return (
 
                                 <div key={item.id}>
@@ -89,7 +111,7 @@ class App extends Component {
                             )
                         })
                     }
-
+                    </div>
                 </div>
             </div>
         );

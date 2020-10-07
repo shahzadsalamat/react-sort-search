@@ -30,41 +30,40 @@ class CreateUsersForm extends Component {
 
     render() {
         return (
-            <div>
-                <form>
-                    <input
-                        className='form-input'
-                        type='text'
-                        name='firstName'
-                        placeholder='firstName'
-                        value={this.state.user.firstName}
-                        onChange={this.handleUserFormChange}
-                    ></input>
-                    <input
-                        className='form-input'
-                        type='text'
-                        name='lastName'
-                        value={this.state.user.lastName}
-                        placeholder='lastName'
-                        onChange={this.handleUserFormChange}
-                    ></input>
-                    
-                    <input
-                        className='form-input'
-                        name='phoneNumber'
-                        placeholder='phoneNumber'
-                        value={this.state.user.phoneNumber}
-                        onChange={this.handleUserFormChange}>
-                    </input>
-                    
-                    <input
-                        className='form-button bg-green'
-                        type='button'
-                        value='Add New User'
-                        onClick={this.handleCreateUserSubmit.bind(this, this.state.user)}
-                    ></input>
+            <div className='form-wrapper'>
+                <input
+                    className='input-form'
+                    type='text'
+                    name='firstName'
+                    placeholder='firstName'
+                    value={this.state.user.firstName}
+                    onChange={this.handleUserFormChange}
+                ></input>
+                <input
+                    className='input-form'
+                    type='text'
+                    name='lastName'
+                    value={this.state.user.lastName}
+                    placeholder='lastName'
+                    onChange={this.handleUserFormChange}
+                ></input>
 
-                </form>
+                <input
+                    className='input-form'
+                    type='number'
+                    name='phoneNumber'
+                    placeholder='phoneNumber'
+                    value={this.state.user.phoneNumber}
+                    onChange={this.handleUserFormChange}>
+                </input>
+                <div>
+                <input
+                    className='form-button bg-green'
+                    type='button'
+                    value='Add New User'
+                    onClick={this.handleCreateUserSubmit.bind(this, this.state.user)}
+                ></input>
+                </div>
             </div>
         );
     }

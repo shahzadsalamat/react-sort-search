@@ -42,11 +42,11 @@ class UsersList extends Component {
                 :
                 (
                     <div key={this.props.user.id}>
-                        <div className='div-table-row'>
-                            <div className='div-table-col'>{this.props.user.firstName}</div>
-                            <div className='div-table-col'>{this.props.user.lastName}</div>
-                            <div className='div-table-col'>{this.props.user.phoneNumber}</div>
-                            <div className='div-table-col'>
+                        <div className='table-row'>
+                            <div className='table-col'>{this.props.user.firstName}</div>
+                            <div className='table-col'>{this.props.user.lastName}</div>
+                            <div className='table-col'>{this.props.user.phoneNumber}</div>
+                            <div className='table-col'>
                                 <input
                                     className='button'
                                     type='button'
