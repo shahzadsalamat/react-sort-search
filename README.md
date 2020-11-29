@@ -1,11 +1,10 @@
 # react-sort-search
 
-for live demo of the project:
+1. Introduction: In addition to create, read, update and delete, user can sort and search data.
 
-https://shahzadsalamat.github.io/react-sort-search/
+2. LIVE DEMO: https://shahzadsalamat.github.io/react-sort-search/
 
-Techonolgies used in this project are listed below:
-
--HTML, CSS 
--Firebase: firebase auth, firebase store, firebase databases 
--React: react hooks, react router
+3. Techonolgies:
+  HTML, CSS 
+  Firebase: firebase auth, firebase store, firebase databases 
+  React: react hooks, react router
